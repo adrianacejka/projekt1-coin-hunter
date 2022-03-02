@@ -8,34 +8,60 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 // sem začni psát svůj program
 
-function stiskKlavesy(udalost) {
-	console.log(udalost.key);
-
-}
-
-
+//poloha panacka start
 let panacek = document.querySelector('#panacek');
-
-// panacek.style.left = '400px';
-// panacek.style.top = '200px';
-
-let pozicePanackaLeft = panacek.style.left = '50px';
-let pozicePanackaTop = panacek.style.top = '100px';
-
+panacek.style.left = '300px';
+panacek.style.top = '300px';
+  
+//aktualni poloha panacka
 let aktualniPanacekLeft = panacek.offsetLeft + 'px';
 console.log(aktualniPanacekLeft);
 
 let aktualniPanacekTop = panacek.offsetTop + 'px';
 console.log(aktualniPanacekTop);
 
+//funkce stisk klaves a hodnota
+
+// function stiskKlavesy(udalost) {
+// console.log(udalost.key);
+	
+// }
+
+function stiskKlavesy(udalost) {
+
+	//console.log(udalost);
+
+	if (udalost.keyCode === 40) {
+		console.log('zmáčkla jsem šipku dolu');
+	} else if (udalost.keyCode === 39) {
+		console.log('zmáčkla jsem šipku doprava');
+	} else if (udalost.keyCode === 38) {
+		console.log('zmáčkla jsem šipku nahoru');
+	}	else if (udalost.keyCode === 37) {
+		console.log('zmáčkla jsem šipku doleva');
+	}
+
+
+	
+	let aktualniPozicePanacekLeft = panacek.offsetLeft + 'px';
+	console.log(aktualniPozicePanacekLeft);
+
+	let aktualniPozicePanacekTop = panacek.offsetTop + 'px';
+	console.log(aktualniPozicePanacekTop);
+
+
+}
+
+
+
 
 let krok
 
 
-udalost.key.ArrowDown
-udalost.key.ArrowRight
-udalost.key.ArrowUp
-udalost.key.ArrowLeft
+// udalost.key.ArrowDown
+// udalost.key.ArrowRight
+// udalost.key.ArrowUp
+// udalost.key.ArrowLeft
 
 
 
