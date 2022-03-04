@@ -8,30 +8,33 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 // sem začni psát svůj program
 
-//poloha panacka start
+// ---------------- poloha panacka při startu
 let panacek = document.querySelector('#panacek');
 panacek.style.left = '300px';
 panacek.style.top = '300px';
+
+document.querySelector('#hudba').volume = 0.3;
+// alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém prohlížeči :)');
+
   
-// aktualni poloha panacka
-// let aktualniPanacekLeft = panacek.offsetLeft + 'px';
-// console.log(aktualniPanacekLeft);
+/* ---------------- aktualni poloha panacka
 
-// let aktualniPanacekTop = panacek.offsetTop + 'px';
-// console.log(aktualniPanacekTop);
+	let aktualniPanacekLeft = panacek.offsetLeft + 'px';
+	console.log(aktualniPanacekLeft);
 
-//funkce stisk klaves a hodnota
+	let aktualniPanacekTop = panacek.offsetTop + 'px';
+	console.log(aktualniPanacekTop);
+*/
 
-// function stiskKlavesy(udalost) {
-// console.log(udalost.key);
-	
-// }
+/* ---------------- funkce stisk klaves a hodnota
 
+	function stiskKlavesy(udalost) {  
+	console.log(udalost.key);	
+	}
+*/
 
 
 function stiskKlavesy(udalost) {
-
-	//console.log(udalost);
 
 	let aktualniPozicePanacekLeft = panacek.offsetLeft
 	console.log(aktualniPozicePanacekLeft);
@@ -86,15 +89,25 @@ function stiskKlavesy(udalost) {
 		}
 	}
 
-
-
-
 }
 
 
 
+let mince = document.querySelector('#mince');
+
+// mince někdy o trochu vylítne z obrazovky, opravit!
+
+let poziceMinceLeft = Math.floor(Math.random() * (window.innerWidth / 19) + 1) * 20 + 'px';
+mince.style.left = poziceMinceLeft;
+console.log(poziceMinceLeft);
 
 
+let poziceMinceTop = Math.floor(Math.random() * (window.innerHeight / 19) + 1) * 20 + 'px';
+mince.style.top = poziceMinceTop;
+console.log(poziceMinceTop);
+
+
+	
 
 
 
