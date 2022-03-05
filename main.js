@@ -11,7 +11,7 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 // ---------------- poloha panacka při startu
 let panacek = document.querySelector('#panacek');
 panacek.style.left = '300px';
-panacek.style.top = '300px';
+panacek.style.top = '250px';
 
 document.querySelector('#hudba').volume = 0.3;
 
@@ -44,46 +44,44 @@ function stiskKlavesy(udalost) {
 	// console.log(aktualniPozicePanacekTop);
 
 	let krok = 20;
+	let panacekSirka = 64;
+	let panacekVyska = 70;
 
 	if (udalost.keyCode === 40) {
-		console.log('zmáčkla jsem šipku dolu');
-		panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
+		// console.log('zmáčkla jsem šipku dolu');
 		document.querySelector('#panacek').src = "obrazky/panacek.png";
 
-		if (parseInt(panacek.style.top) + 70 >= 0 && parseInt(panacek.style.top) < window.innerHeight - 70) {
+		if (parseInt(panacek.style.top) + 70 >= 0 && parseInt(panacek.style.top) < window.innerHeight - panacekVyska) {
 			panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		} else {
 			panacek.style.top = aktualniPozicePanacekTop - krok + 'px';
 		}
 
 	} else if (udalost.keyCode === 39) {
-		console.log('zmáčkla jsem šipku doprava');
-		panacek.style.left = aktualniPozicePanacekLeft + krok + 'px';
+		// console.log('zmáčkla jsem šipku doprava');
 		document.querySelector('#panacek').src = "obrazky/panacek-vpravo.png";
 
-		if (parseInt(panacek.style.left) >= 0 && parseInt(panacek.style.left) < window.innerWidth - 70) {
+		if (parseInt(panacek.style.left) >= 0 && parseInt(panacek.style.left) < window.innerWidth - panacekSirka) {
 			panacek.style.left = aktualniPozicePanacekLeft + krok + 'px';
 		} else {
 			panacek.style.left = aktualniPozicePanacekLeft - krok + 'px';
 		}
 
 	} else if (udalost.keyCode === 38) {
-		console.log('zmáčkla jsem šipku nahoru');
-		panacek.style.top = aktualniPozicePanacekTop - krok + 'px';
+		// console.log('zmáčkla jsem šipku nahoru');
 		document.querySelector('#panacek').src = "obrazky/panacek-nahoru.png";
 
-		if (parseInt(panacek.style.top) >= 0 && parseInt(panacek.style.top) < window.innerHeight - 70) {
+		if (parseInt(panacek.style.top) > 0 && parseInt(panacek.style.top) < window.innerHeight - panacekVyska) {
 			panacek.style.top = aktualniPozicePanacekTop - krok + 'px';
 		} else {
 			panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		}
 
 	} else if (udalost.keyCode === 37) {
-		console.log('zmáčkla jsem šipku doleva');
-		panacek.style.left = aktualniPozicePanacekLeft - krok + 'px';
+		// console.log('zmáčkla jsem šipku doleva');
 		document.querySelector('#panacek').src = "obrazky/panacek-vlevo.png";
 
-		if (parseInt(panacek.style.left) >= 0 && parseInt(panacek.style.left) < window.innerWidth - 70) {
+		if (parseInt(panacek.style.left) > 0 && parseInt(panacek.style.left) < window.innerWidth - panacekSirka) {
 			panacek.style.left = aktualniPozicePanacekLeft - krok + 'px';
 		} else {
 			panacek.style.left = aktualniPozicePanacekLeft + krok + 'px';
