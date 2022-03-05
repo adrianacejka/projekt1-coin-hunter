@@ -14,6 +14,7 @@ panacek.style.left = '300px';
 panacek.style.top = '300px';
 
 document.querySelector('#hudba').volume = 0.3;
+
 // alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém prohlížeči :)');
 
   
@@ -36,11 +37,11 @@ document.querySelector('#hudba').volume = 0.3;
 
 function stiskKlavesy(udalost) {
 
-	let aktualniPozicePanacekLeft = panacek.offsetLeft
-	console.log(aktualniPozicePanacekLeft);
+	let aktualniPozicePanacekLeft = panacek.offsetLeft;
+	// console.log(aktualniPozicePanacekLeft);
 
-	let aktualniPozicePanacekTop = panacek.offsetTop
-	console.log(aktualniPozicePanacekTop);
+	let aktualniPozicePanacekTop = panacek.offsetTop;
+	// console.log(aktualniPozicePanacekTop);
 
 	let krok = 20;
 
@@ -91,23 +92,17 @@ function stiskKlavesy(udalost) {
 
 }
 
-
-
 let mince = document.querySelector('#mince');
+let sirkaMince = 40;
+let vyskaMince = 40;
 
-// mince někdy o trochu vylítne z obrazovky, opravit!
-
-let poziceMinceLeft = Math.floor(Math.random() * (window.innerWidth / 19) + 1) * 20 + 'px';
+let poziceMinceLeft = Math.floor(Math.random() * ((window.innerWidth - sirkaMince) + 1)) + 'px';
 mince.style.left = poziceMinceLeft;
 console.log(poziceMinceLeft);
 
-
-let poziceMinceTop = Math.floor(Math.random() * (window.innerHeight / 19) + 1) * 20 + 'px';
+let poziceMinceTop = Math.floor(Math.random() * ((window.innerHeight - vyskaMince) + 1)) + 'px';
 mince.style.top = poziceMinceTop;
 console.log(poziceMinceTop);
-
-
-	
 
 
 
