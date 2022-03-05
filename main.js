@@ -11,7 +11,7 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 // ---------------- poloha panacka při startu
 let panacek = document.querySelector('#panacek');
 panacek.style.left = '300px';
-panacek.style.top = '250px';
+panacek.style.top = '300px';
 
 document.querySelector('#hudba').volume = 0.3;
 
@@ -49,9 +49,10 @@ function stiskKlavesy(udalost) {
 
 	if (udalost.keyCode === 40) {
 		// console.log('zmáčkla jsem šipku dolu');
+		panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek.png";
 
-		if (parseInt(panacek.style.top) + 70 >= 0 && parseInt(panacek.style.top) < window.innerHeight - panacekVyska) {
+		if (parseInt(panacek.style.top) >= 0 && parseInt(panacek.style.top) < window.innerHeight - panacekVyska) {
 			panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		} else {
 			panacek.style.top = aktualniPozicePanacekTop - krok + 'px';
@@ -59,6 +60,7 @@ function stiskKlavesy(udalost) {
 
 	} else if (udalost.keyCode === 39) {
 		// console.log('zmáčkla jsem šipku doprava');
+		panacek.style.left = aktualniPozicePanacekLeft + krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek-vpravo.png";
 
 		if (parseInt(panacek.style.left) >= 0 && parseInt(panacek.style.left) < window.innerWidth - panacekSirka) {
@@ -69,6 +71,7 @@ function stiskKlavesy(udalost) {
 
 	} else if (udalost.keyCode === 38) {
 		// console.log('zmáčkla jsem šipku nahoru');
+		panacek.style.top = aktualniPozicePanacekTop - krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek-nahoru.png";
 
 		if (parseInt(panacek.style.top) > 0 && parseInt(panacek.style.top) < window.innerHeight - panacekVyska) {
@@ -79,6 +82,7 @@ function stiskKlavesy(udalost) {
 
 	} else if (udalost.keyCode === 37) {
 		// console.log('zmáčkla jsem šipku doleva');
+		panacek.style.left = aktualniPozicePanacekLeft - krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek-vlevo.png";
 
 		if (parseInt(panacek.style.left) > 0 && parseInt(panacek.style.left) < window.innerWidth - panacekSirka) {
