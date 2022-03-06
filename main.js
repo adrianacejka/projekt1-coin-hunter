@@ -33,6 +33,21 @@ document.querySelector('#hudba').volume = 0.3;
 	console.log(udalost.key);	
 	}
 */
+
+
+let mince = document.querySelector('#mince');
+let sirkaMince = 40;
+let vyskaMince = 40;
+
+let poziceMinceLeft = Math.floor(Math.random() * (window.innerWidth - sirkaMince)) + 'px';
+mince.style.left = poziceMinceLeft;
+console.log(poziceMinceLeft);
+
+let poziceMinceTop = Math.floor(Math.random() * (window.innerHeight - vyskaMince)) + 'px';
+mince.style.top = poziceMinceTop;
+console.log(poziceMinceTop);
+
+
 let panacekSirka = 64;
 let panacekVyska = 70;
 
@@ -92,9 +107,12 @@ function stiskKlavesy(udalost) {
 		}
 	}
 
+
+	// ----------- prolnuti pozic panacka a mince
+
 	if (!(parseInt(panacek.style.left) + panacekSirka < parseInt(poziceMinceLeft) || 
 	// ---- zprava
-	poziceMinceLeft + sirkaMince < parseInt(panacek.style.left) ||
+	parseInt(poziceMinceLeft) + sirkaMince < parseInt(panacek.style.left) ||
 	// ---- shora
 	parseInt(panacek.style.top) + panacekVyska < parseInt(poziceMinceTop) ||
 	// ---- zespoda
@@ -103,39 +121,11 @@ function stiskKlavesy(udalost) {
 		//panacek a mince se potkavaji
 		console.log('potkali se!');
 		mince.style.display = 'none';
-	};
+		
+	}
 
 }
 
-let mince = document.querySelector('#mince');
-let sirkaMince = 40;
-let vyskaMince = 40;
-
-	
-let poziceMinceLeft = Math.floor(Math.random() * (window.innerWidth - sirkaMince)) + 'px';
-mince.style.left = poziceMinceLeft;
-console.log(poziceMinceLeft);
-
-let poziceMinceTop = Math.floor(Math.random() * (window.innerHeight - vyskaMince)) + 'px';
-mince.style.top = poziceMinceTop;
-console.log(poziceMinceTop);
-
-
-// ----------- prolnuti pozic panacka a mince
-
-	// ---- zleva
-if (!(parseInt(panacek.style.left) + panacekSirka < parseInt(poziceMinceLeft) || 
-	// ---- zprava
-	poziceMinceLeft + sirkaMince < parseInt(panacek.style.left) ||
-	// ---- shora
-	parseInt(panacek.style.top) + panacekVyska < parseInt(poziceMinceTop) ||
-	// ---- zespoda
-	parseInt(poziceMinceTop) + vyskaMince < parseInt(panacek.style.top))) {
-		
-		//panacek a mince se potkavaji
-		console.log('potkali se!');
-		mince.style.display = none;
-	};
 
 
 
