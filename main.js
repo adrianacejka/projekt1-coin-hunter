@@ -33,7 +33,8 @@ document.querySelector('#hudba').volume = 0.3;
 	console.log(udalost.key);	
 	}
 */
-
+let panacekSirka = 64;
+let panacekVyska = 70;
 
 function stiskKlavesy(udalost) {
 
@@ -44,8 +45,7 @@ function stiskKlavesy(udalost) {
 	// console.log(aktualniPozicePanacekTop);
 
 	let krok = 20;
-	let panacekSirka = 64;
-	let panacekVyska = 70;
+	
 
 	if (udalost.keyCode === 40) {
 		// console.log('zmáčkla jsem šipku dolu');
@@ -92,6 +92,19 @@ function stiskKlavesy(udalost) {
 		}
 	}
 
+	if (!(parseInt(panacek.style.left) + panacekSirka < parseInt(poziceMinceLeft) || 
+	// ---- zprava
+	poziceMinceLeft + sirkaMince < parseInt(panacek.style.left) ||
+	// ---- shora
+	parseInt(panacek.style.top) + panacekVyska < parseInt(poziceMinceTop) ||
+	// ---- zespoda
+	parseInt(poziceMinceTop) + vyskaMince < parseInt(panacek.style.top))) {
+		
+		//panacek a mince se potkavaji
+		console.log('potkali se!');
+		mince.style.display = 'none';
+	};
+
 }
 
 let mince = document.querySelector('#mince');
@@ -110,28 +123,18 @@ console.log(poziceMinceTop);
 
 // ----------- prolnuti pozic panacka a mince
 
-
-
-
-let panacekSirka = 64;
-let panacekVyska = 70;
-
 	// ---- zleva
-if 
-	(!(parseInt(panacek.style.left) + panacekSirka < parseInt(poziceMinceLeft) || 
+if (!(parseInt(panacek.style.left) + panacekSirka < parseInt(poziceMinceLeft) || 
 	// ---- zprava
 	poziceMinceLeft + sirkaMince < parseInt(panacek.style.left) ||
 	// ---- shora
 	parseInt(panacek.style.top) + panacekVyska < parseInt(poziceMinceTop) ||
 	// ---- zespoda
-	parseInt(poziceMinceTop) + vyskaMince < parseInt(panacek.style.top))) 
-	{
-		console.log(panacek.style.left);
-		console.log(panacek.style.top);
-		console.log(poziceMinceLeft);
-		console.log(poziceMinceTop);
+	parseInt(poziceMinceTop) + vyskaMince < parseInt(panacek.style.top))) {
+		
 		//panacek a mince se potkavaji
 		console.log('potkali se!');
+		mince.style.display = none;
 	};
 
 
