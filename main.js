@@ -10,8 +10,8 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 // ---------------- poloha panacka při startu
 let panacek = document.querySelector('#panacek');
-let panacekX = panacek.style.left = '300px';
-let panacekY = panacek.style.top = '300px'
+panacek.style.left = '300px';
+panacek.style.top = '300px';
 
 document.querySelector('#hudba').volume = 0.3;
 
@@ -49,76 +49,65 @@ function stiskKlavesy(udalost) {
 
 	if (udalost.keyCode === 40) {
 		// console.log('zmáčkla jsem šipku dolu');
-		panacekY = aktualniPozicePanacekTop + krok + 'px';
+		panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek.png";
 
 		if (parseInt(panacek.style.top) >= 0 && parseInt(panacek.style.top) < window.innerHeight - panacekVyska) {
-			panacekY = aktualniPozicePanacekTop + krok + 'px';
+			panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		} else {
-			panacekY = aktualniPozicePanacekTop - krok + 'px';
+			panacek.style.top = aktualniPozicePanacekTop - krok + 'px';
 		}
 
 	} else if (udalost.keyCode === 39) {
 		// console.log('zmáčkla jsem šipku doprava');
-		panacekX = aktualniPozicePanacekLeft + krok + 'px';
+		panacek.style.left = aktualniPozicePanacekLeft + krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek-vpravo.png";
 
 		if (parseInt(panacek.style.left) >= 0 && parseInt(panacek.style.left) < window.innerWidth - panacekSirka) {
-			panacekX = aktualniPozicePanacekLeft + krok + 'px';
+			panacek.style.left = aktualniPozicePanacekLeft + krok + 'px';
 		} else {
-			panacekX = aktualniPozicePanacekLeft - krok + 'px';
+			panacek.style.left = aktualniPozicePanacekLeft - krok + 'px';
 		}
 
 	} else if (udalost.keyCode === 38) {
 		// console.log('zmáčkla jsem šipku nahoru');
-		panacekY = aktualniPozicePanacekTop - krok + 'px';
+		panacek.style.top = aktualniPozicePanacekTop - krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek-nahoru.png";
 
 		if (parseInt(panacek.style.top) > 0 && parseInt(panacek.style.top) < window.innerHeight - panacekVyska) {
-			panacekY = aktualniPozicePanacekTop - krok + 'px';
+			panacek.style.top = aktualniPozicePanacekTop - krok + 'px';
 		} else {
-			panacekY = aktualniPozicePanacekTop + krok + 'px';
+			panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		}
 
 	} else if (udalost.keyCode === 37) {
 		// console.log('zmáčkla jsem šipku doleva');
-		panacekX = aktualniPozicePanacekLeft - krok + 'px';
+		panacek.style.left = aktualniPozicePanacekLeft - krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek-vlevo.png";
 
 		if (parseInt(panacek.style.left) > 0 && parseInt(panacek.style.left) < window.innerWidth - panacekSirka) {
-			panacekX = aktualniPozicePanacekLeft - krok + 'px';
+			panacek.style.left = aktualniPozicePanacekLeft - krok + 'px';
 		} else {
-			panacekX = aktualniPozicePanacekLeft + krok + 'px';
+			panacek.style.left = aktualniPozicePanacekLeft + krok + 'px';
 		}
 	}
- 
+
 }
 
-// ------------ náhodná pozice mince
-
 let mince = document.querySelector('#mince');
-let minceSirka = 40;
-let minceVyska = 40;
+let sirkaMince = 40;
+let vyskaMince = 40;
 
-let minceX = mince.style.left = Math.floor(Math.random() * (window.innerWidth - minceSirka)) + 'px';
-console.log(minceX);
+let poziceMinceLeft = Math.floor(Math.random() * ((window.innerWidth - sirkaMince) + 1)) + 'px';
+mince.style.left = poziceMinceLeft;
+console.log(poziceMinceLeft);
 
-let minceY = mince.style.top = Math.floor(Math.random() * (window.innerHeight - minceVyska)) + 'px';
-console.log(minceY);
+let poziceMinceTop = Math.floor(Math.random() * ((window.innerHeight - vyskaMince) + 1)) + 'px';
+mince.style.top = poziceMinceTop;
+console.log(poziceMinceTop);
 
 
-// ----------- prolnuti pozic panacka a mince
-let panacekSirka = 64;
-let panacekVyska = 70;
 
-	// ---- zleva
-if (!(panacekX + panacekSirka < minceX || 
-	// ---- zprava
-	minceX + minceSirka < panacekX ||
-	// ---- shora
-	panacekY + panacekVyska < minceY ||
-	// ---- zespoda
-	minceY + minceVyska < panacekY)) {
-		//panacek a mince se potkavaji
-		mince.style.position = hidden;
-	}
+
+
+
