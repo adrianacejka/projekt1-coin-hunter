@@ -3,6 +3,9 @@ alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém proh
 
 let audio = document.querySelector('#hudba');
 let zvukMince = document.querySelector('#zvukmince');
+let score = document.querySelector('#score');
+let pocitadlo = 0;
+let fanfara = document.querySelector('#zvukfanfara');
 
 let panacek = document.querySelector('#panacek');
 let pozicePanacekLeft;
@@ -38,14 +41,29 @@ function poziceMince() {
 	// console.log(poziceMinceTop);
 }
 
+function vyhra() {
+	if (pocitadlo === 5) {
+		fanfara.play();
+		score.innerHTML = '<span class="vyhra">Jupííí! Máš pět peněz! <br><br> Můžeš ale hrát dál...</span>';
+	}
+}
+
+function prictiBod() {
+	pocitadlo++;	
+	score.textContent = pocitadlo;
+	console.log(pocitadlo);
+	vyhra();
+}
+
 function priNacteniStranky() {
-	zapniAudio()
+	zapniAudio();
 	poziceMince();
 	panacek.style.left = '300px';
 	panacek.style.top = '300px';
 }
 
 function seberMinci() {
+	
 	if (!(parseInt(panacek.style.left) + panacekSirka < parseInt(poziceMinceLeft) || 
 	parseInt(poziceMinceLeft) + sirkaMince < parseInt(panacek.style.left) ||
 	parseInt(panacek.style.top) + panacekVyska < parseInt(poziceMinceTop) ||
@@ -54,7 +72,7 @@ function seberMinci() {
 		console.log('potkali se!');
 		zahrajPriSberuMince();
 		poziceMince();
-		
+		prictiBod();	
 	}
 }
 
@@ -66,7 +84,7 @@ function priStiskuKlavesy(udalost) {
 		// console.log('zmáčkla jsem šipku dolu');
 		panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		document.querySelector('#panacek').src = "obrazky/panacek.png";
-
+		
 		if (parseInt(panacek.style.top) >= 0 && parseInt(panacek.style.top) < window.innerHeight - panacekVyska) {
 			panacek.style.top = aktualniPozicePanacekTop + krok + 'px';
 		} else {
@@ -109,7 +127,7 @@ function priStiskuKlavesy(udalost) {
 
 
 	seberMinci();
-
+	
 }
 
 

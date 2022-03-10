@@ -35,7 +35,7 @@ body {
 #score {
   position: absolute;
   top: 50px;
-  left: 50%;
+  left: 100px;
   font-family: "Press Start 2P", sans-serif;
   font-size: 36px;
   z-index: 999;
@@ -49,4 +49,9 @@ body {
 
 #panacek {
   z-index: 1;
+}
+
+.vyhra {
+  font-size: 50px;
+  left: 50px;
 }
