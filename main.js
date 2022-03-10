@@ -1,66 +1,66 @@
-// toto budeš potřebovat později
-/*
-if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
-	// panacek a mince se prekryvaji
-}
-*/
 
+alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém prohlížeči. Vyhraješ, pokud sesbíráš pět mincí. Ale i tak potom můžeš hrát bez obav dál.... Pro posun panáčka použij šipky na klávesnici. Hezkou zábavu!');
 
-// sem začni psát svůj program
+let audio = document.querySelector('#hudba');
+let zvukMince = document.querySelector('#zvukmince');
 
-// ---------------- poloha panacka při startu
 let panacek = document.querySelector('#panacek');
-panacek.style.left = '300px';
-panacek.style.top = '300px';
+let pozicePanacekLeft;
+let aktualniPozicePanacekLeft;
+let pozicePanacekTop;
+let aktualniPozicePanacekTop;
+let panacekSirka = 64;
+let panacekVyska = 70;
 
-document.querySelector('#hudba').volume = 0.3;
-
-// alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém prohlížeči :)');
-
-  
-/* ---------------- aktualni poloha panacka
-
-	let aktualniPanacekLeft = panacek.offsetLeft + 'px';
-	console.log(aktualniPanacekLeft);
-
-	let aktualniPanacekTop = panacek.offsetTop + 'px';
-	console.log(aktualniPanacekTop);
-*/
-
-/* ---------------- funkce stisk klaves a hodnota
-
-	function stiskKlavesy(udalost) {  
-	console.log(udalost.key);	
-	}
-*/
-
+let krok = 20;
 
 let mince = document.querySelector('#mince');
 let sirkaMince = 40;
 let vyskaMince = 40;
-
-let poziceMinceLeft = Math.floor(Math.random() * (window.innerWidth - sirkaMince)) + 'px';
-mince.style.left = poziceMinceLeft;
-console.log(poziceMinceLeft);
-
-let poziceMinceTop = Math.floor(Math.random() * (window.innerHeight - vyskaMince)) + 'px';
-mince.style.top = poziceMinceTop;
-console.log(poziceMinceTop);
+let poziceMinceLeft;
+let poziceMinceTop;
 
 
-let panacekSirka = 64;
-let panacekVyska = 70;
+// ******* Funkce ********************
 
-function stiskKlavesy(udalost) {
+function zapniAudio() {
+	audio.volume = 0.3;
+}
 
-	let aktualniPozicePanacekLeft = panacek.offsetLeft;
-	// console.log(aktualniPozicePanacekLeft);
+function zahrajPriSberuMince() {
+	zvukMince.play();
+}
 
-	let aktualniPozicePanacekTop = panacek.offsetTop;
-	// console.log(aktualniPozicePanacekTop);
+function poziceMince() {
+	poziceMinceLeft = mince.style.left = Math.floor(Math.random() * (window.innerWidth - sirkaMince)) + 'px';
+	// console.log(poziceMinceLeft);
+	poziceMinceTop = mince.style.top = Math.floor(Math.random() * (window.innerHeight - vyskaMince)) + 'px';
+	// console.log(poziceMinceTop);
+}
 
-	let krok = 20;
-	
+function priNacteniStranky() {
+	zapniAudio()
+	poziceMince();
+	panacek.style.left = '300px';
+	panacek.style.top = '300px';
+}
+
+function seberMinci() {
+	if (!(parseInt(panacek.style.left) + panacekSirka < parseInt(poziceMinceLeft) || 
+	parseInt(poziceMinceLeft) + sirkaMince < parseInt(panacek.style.left) ||
+	parseInt(panacek.style.top) + panacekVyska < parseInt(poziceMinceTop) ||
+	parseInt(poziceMinceTop) + vyskaMince < parseInt(panacek.style.top))) {
+		
+		console.log('potkali se!');
+		zahrajPriSberuMince();
+		poziceMince();
+		
+	}
+}
+
+function priStiskuKlavesy(udalost) {
+	aktualniPozicePanacekLeft = panacek.offsetLeft;
+	aktualniPozicePanacekTop = panacek.offsetTop;
 
 	if (udalost.keyCode === 40) {
 		// console.log('zmáčkla jsem šipku dolu');
@@ -108,23 +108,11 @@ function stiskKlavesy(udalost) {
 	}
 
 
-	// ----------- prolnuti pozic panacka a mince
-
-	if (!(parseInt(panacek.style.left) + panacekSirka < parseInt(poziceMinceLeft) || 
-	// ---- zprava
-	parseInt(poziceMinceLeft) + sirkaMince < parseInt(panacek.style.left) ||
-	// ---- shora
-	parseInt(panacek.style.top) + panacekVyska < parseInt(poziceMinceTop) ||
-	// ---- zespoda
-	parseInt(poziceMinceTop) + vyskaMince < parseInt(panacek.style.top))) {
-		
-		//panacek a mince se potkavaji
-		console.log('potkali se!');
-		mince.style.display = 'none';
-		
-	}
+	seberMinci();
 
 }
+
+
 
 
 
