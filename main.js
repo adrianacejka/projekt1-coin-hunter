@@ -1,5 +1,5 @@
 
-alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém prohlížeči. Vyhraješ, pokud sesbíráš pět mincí. Ale i tak potom můžeš hrát bez obav dál.... Pro posun panáčka použij šipky na klávesnici. Hezkou zábavu!');
+alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém prohlížeči');
 
 let audio = document.querySelector('#hudba');
 let zvukMince = document.querySelector('#zvukmince');
