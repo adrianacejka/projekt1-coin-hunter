@@ -14,6 +14,10 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: right;
+  align-items: right; */
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -35,11 +39,23 @@ body {
 #score {
   position: absolute;
   top: 50px;
-  left: 100px;
+  left: 50px;
   font-family: "Press Start 2P", sans-serif;
   font-size: 36px;
   z-index: 999;
   color: var(--score);
+}
+
+#audio-on,
+#audio-off {
+  font-family: "Press Start 2P", sans-serif;
+  color: var(--score);
+  font-size: 24px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: right;
+  margin-right: 50px;
+  margin-top: 20px;
 }
 
 #panacek,
@@ -51,7 +67,6 @@ body {
   z-index: 1;
 }
 
-.vyhra {
-  font-size: 50px;
-  left: 50px;
+#jupi {
+  font-size: 30px;
 }

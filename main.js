@@ -1,16 +1,15 @@
 
-alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém prohlížeči');
+// alert('Pro ultimátní zážitek ze hry povol přehrávání audia ve svém prohlížeči');
 
 let audio = document.querySelector('#hudba');
 let zvukMince = document.querySelector('#zvukmince');
 let score = document.querySelector('#score');
-let pocitadlo = 0;
+
 let fanfara = document.querySelector('#zvukfanfara');
+let pocitadlo = 0;
 
 let panacek = document.querySelector('#panacek');
-let pozicePanacekLeft;
 let aktualniPozicePanacekLeft;
-let pozicePanacekTop;
 let aktualniPozicePanacekTop;
 let panacekSirka = 64;
 let panacekVyska = 70;
@@ -27,7 +26,12 @@ let poziceMinceTop;
 // ******* Funkce ********************
 
 function zapniAudio() {
+	audio.play();
 	audio.volume = 0.3;
+}
+
+function zastavAudio() {
+	audio.pause();
 }
 
 function zahrajPriSberuMince() {
@@ -44,19 +48,18 @@ function poziceMince() {
 function vyhra() {
 	if (pocitadlo === 5) {
 		fanfara.play();
-		score.innerHTML = '<span class="vyhra">Jupííí! Máš pět peněz! <br><br> Můžeš ale hrát dál...</span>';
+		score.innerHTML = '<span id="jupi">Jupííí! <br> Máš pět peněz! <br> Můžeš ale hrát dál...</span>';
 	}
 }
 
 function prictiBod() {
 	pocitadlo++;	
 	score.textContent = pocitadlo;
-	console.log(pocitadlo);
 	vyhra();
 }
 
 function priNacteniStranky() {
-	zapniAudio();
+	//zapniAudio();
 	poziceMince();
 	panacek.style.left = '300px';
 	panacek.style.top = '300px';
